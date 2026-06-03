@@ -65,7 +65,7 @@ public class IDVerifier {
     public static String getIDRole(String idNumber) {
         int quotient = calculateDotProduct(idNumber) / GradeConstants.ID_DIVISOR;
 
-        if (quotient == GradeConstants.FACULTY_THRESHOLD) {
+        if (quotient >= GradeConstants.FACULTY_THRESHOLD) {
             return "faculty";
         }
 

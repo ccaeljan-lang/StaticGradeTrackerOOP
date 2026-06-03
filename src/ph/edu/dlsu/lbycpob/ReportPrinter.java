@@ -63,20 +63,20 @@ public class ReportPrinter {
         // for the row number column.
         for (int i = 0; i < repo.getCount(); i++) {
             Student s     = repo.getStudent(i);
-//            String  grade = s.getNumericGrade();
-//            char    rank  = s.getLetterRank();
+            String  grade = s.getNumericGrade();
+            char    rank  = s.getLetterRank();
 
             // [TRACE] s.getIdNumber() provides the 8-digit ID string  [NEW]
             // [TRACE] Static call: GradeCalculator.getRemarks(rank)
-//            sb.append(String.format(
-//                    "%-5d %-10s %-20s %-10.2f %-7s %-6c %-5s%n",
-//                    (i + 1),
-//                    s.getIdNumber(),          // [NEW] ID column value
-//                    s.getName(),
-//                    s.getRawGrade(),
-//                    grade,
-//                    rank,
-//                    GradeCalculator.getRemarks(rank)));
+            sb.append(String.format(
+                    "%-5d %-10s %-20s %-10.2f %-7s %-6c %-5s%n",
+                    (i + 1),
+                    s.getIdNumber(),          // [NEW] ID column value
+                    s.getName(),
+                    s.getRawGrade(),
+                    grade,
+                    rank,
+                    GradeCalculator.getRemarks(rank)));
         }
 
         // [FORMAT] Build table footer
@@ -100,24 +100,24 @@ public class ReportPrinter {
         IO.println("\n[TRACE] Processing " + repo.getCount() + " student records...");
 
         // [INIT] Seed with first student so comparisons start correctly
-//        double highest      = repo.getStudent(0).getRawGrade();
-//        double lowest       = repo.getStudent(0).getRawGrade();
-//        double sum          = repo.getStudent(0).getRawGrade();
+        double highest      = repo.getStudent(0).getRawGrade();
+        double lowest       = repo.getStudent(0).getRawGrade();
+        double sum          = repo.getStudent(0).getRawGrade();
         int    highestIndex = 0;
         int    lowestIndex  = 0;
 
         // [TRACE] Loop from index 1 — index 0 already seeded above
         // [UNDERSTAND] for loop used because the index is needed to
         // track which student holds the highest/lowest grade.
-//        for (int i = 1; i < repo.getCount(); i++) {
-//            double grade = repo.getStudent(i).getRawGrade();
-//            sum += grade;
-//
-//            if (grade > highest) { highest = grade; highestIndex = i; }
-//            if (grade < lowest)  { lowest  = grade; lowestIndex  = i; }
-//        }
-//
-//        double classMean = sum / repo.getCount();
+        for (int i = 1; i < repo.getCount(); i++) {
+            double grade = repo.getStudent(i).getRawGrade();
+            sum += grade;
+
+            if (grade > highest) { highest = grade; highestIndex = i; }
+            if (grade < lowest)  { lowest  = grade; lowestIndex  = i; }
+        }
+
+        double classMean = sum / repo.getCount();
 
         // [FORMAT] Display formatted statistics report
         printSeparatorLine(); // [TRACE] Static call to sibling static method
@@ -127,17 +127,17 @@ public class ReportPrinter {
         IO.println("-".repeat(GradeConstants.SEPARATOR));
 
         // [TRACE] Static calls to GradeCalculator.assignLetterRank(grade)
-//        IO.println(String.format(
-//                "  Highest Raw Grade:  %s (%.2f) - Rank: %c-tier %n",
-//                repo.getStudent(highestIndex).getName(), highest,
-//                GradeCalculator.assignLetterRank(highest)));
-//        IO.println(String.format(
-//                "  Lowest Raw Grade:   %s (%.2f) - Rank: %c-tier %n",
-//                repo.getStudent(lowestIndex).getName(), lowest,
-//                GradeCalculator.assignLetterRank(lowest)));
-//        IO.println(String.format(
-//                "  Class Mean:              %.2f  - Rank: %c-tier %n",
-//                classMean, GradeCalculator.assignLetterRank(classMean)));
-//        printSeparatorLine();
+        IO.println(String.format(
+                "  Highest Raw Grade:  %s (%.2f) - Rank: %c-tier %n",
+                repo.getStudent(highestIndex).getName(), highest,
+                GradeCalculator.assignLetterRank(highest)));
+        IO.println(String.format(
+                "  Lowest Raw Grade:   %s (%.2f) - Rank: %c-tier %n",
+                repo.getStudent(lowestIndex).getName(), lowest,
+                GradeCalculator.assignLetterRank(lowest)));
+        IO.println(String.format(
+                "  Class Mean:              %.2f  - Rank: %c-tier %n",
+                classMean, GradeCalculator.assignLetterRank(classMean)));
+        printSeparatorLine();
     }
 }
