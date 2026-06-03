@@ -1,7 +1,7 @@
 package ph.edu.dlsu.lbycpob;
 
 // ============================================================
-// GradeTrackerApp.java 
+// GradeTrackerApp.java
 // RESPONSIBILITY: Application entry point and menu controller
 // SRP: Orchestrates navigation between features — delegates all
 //      real work to the specialist classes
@@ -25,7 +25,7 @@ public class GradeTrackerApp {
     // [UNDERSTAND] The JVM starts here. Because main() is static,
     //              it has no "this" — so we create one GradeTrackerApp
     //              instance and hand control to its instance method.
-    public void main() {
+    public static void main() {
         displayMenu();
     }
 
