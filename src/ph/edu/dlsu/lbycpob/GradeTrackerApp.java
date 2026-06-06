@@ -1,3 +1,7 @@
+// [IMPORTANT NOTE] CREATED STATIC FIRST AND THEN TURNED IT INTO NON-STATIC. So the commit history
+// of the static code is part of the GradeTrackerOOP already.
+// Which finished at "FINISHED CODE" commit message.
+
 package ph.edu.dlsu.lbycpob;
 
 // ============================================================
