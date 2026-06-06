@@ -23,7 +23,7 @@ public class StudentInputHandler {
     // [INPUT] Prompts for and returns a validated, non-empty name
     // [UNDERSTAND] do-while used because the prompt must run at least
     // once; emptiness can only be checked after reading the input.
-    public String inputName(int studentNumber) {
+    public static String inputName(int studentNumber) {
         String name;
         do {
             IO.print("Student " + studentNumber + " name: ");
@@ -40,7 +40,7 @@ public class StudentInputHandler {
     // prime-read before the loop body.
     // [TRACE] GradeConstants.MAX_STUDENTS replaces the old C.MAX_STUDENTS
     //         because MAX_STUDENTS is now a static field.
-    public int inputStudentCount() {
+    public static int inputStudentCount() {
         int count;
         do {
             IO.print("How many students? (1-" + GradeConstants.MAX_STUDENTS + "): ");
