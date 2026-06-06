@@ -1,7 +1,3 @@
-// [IMPORTANT NOTE] CREATED STATIC FIRST AND THEN TURNED IT INTO NON-STATIC. So the commit history
-// of the static code is part of the GradeTrackerOOP already.
-// Which finished at "FINISHED CODE" commit message.
-
 package ph.edu.dlsu.lbycpob;
 
 // ============================================================
@@ -20,6 +16,7 @@ package ph.edu.dlsu.lbycpob;
 //       since ReportPrinter has no instance state.
 // ============================================================
 public class GradeTrackerApp {
+
     // [DECLARE] Instance fields — each running app gets its own copies
     private StudentRepository repo = new StudentRepository();
     private StudentInputHandler inputHandler = new StudentInputHandler();
@@ -29,7 +26,8 @@ public class GradeTrackerApp {
     // [UNDERSTAND] The JVM starts here. Because main() is static,
     //              it has no "this" — so we create one GradeTrackerApp
     //              instance and hand control to its instance method.
-    public static void main() {
+    public void main() {
+        // [TRACE] Create one app object, then start the menu loop
         displayMenu();
     }
 
@@ -39,7 +37,6 @@ public class GradeTrackerApp {
     void displayMenu() {
         String choice;
         do {
-
             ReportPrinter.printSeparatorLine(); // [TRACE] Static call — no object needed
             IO.println("\t\t\t GRADE TRACKER MENU");
             ReportPrinter.printSeparatorLine();
@@ -50,6 +47,7 @@ public class GradeTrackerApp {
             IO.println("\t5. Exit");
             ReportPrinter.printSeparatorLine();
             IO.print("Enter choice (1-5): ");
+
             choice = IO.readln().trim();
 
             // [UNDERSTAND] Switch expression used instead of if-else because
@@ -63,6 +61,7 @@ public class GradeTrackerApp {
                 case "5" -> IO.println("Goodbye!");
                 default -> IO.println("Invalid choice. Please enter 1 to 5.");
             }
+
         } while (!choice.equals("5"));
     }
 
